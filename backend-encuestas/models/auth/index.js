@@ -1,4 +1,19 @@
-const { selectUser } = require("./queries");
+const { insertUser, selectUser } = require("./queries");
+
+const createUser = (db) => async (email, username, password, edit_access) => {
+  try {
+    await db.query(insertUser(email, username, password, edit_access));
+    return {
+      ok: true,
+    };
+  } catch (error) {
+    console.info("> Create user error: ", error.message);
+    return {
+      ok: false,
+      message: error.message,
+    };
+  }
+};
 
 const getUser = (db) => async (email, compareFn) => {
   try {
@@ -37,5 +52,6 @@ const getUser = (db) => async (email, compareFn) => {
 };
 
 module.exports = {
-  selectUser,
+  createUser,
+  getUser,
 };
