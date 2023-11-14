@@ -15,7 +15,7 @@ const routes = require("./routes");
 
 app.use(routes(db));
 
-app.use((_, _, next) => {
+app.use((_, __, next) => {
   next(errors[404]);
 });
 

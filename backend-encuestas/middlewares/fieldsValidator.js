@@ -8,7 +8,7 @@ module.exports =
     }
     const { password } = req.body;
 
-    if (password && password.length < 8) return next(errors["pass_length"]);
+    if (password && password.length < 4) return next(errors["pass_length"]);
 
     return next();
   };

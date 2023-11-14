@@ -9,7 +9,7 @@ module.exports = {
   },
   pass_length: {
     statusCode: 400,
-    error: new Error("password length must be at least 8"),
+    error: new Error("password length must be at least 4"),
   },
   401: {
     statusCode: 401,

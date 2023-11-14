@@ -8,7 +8,7 @@ const insertUser = (username, email, password, edit_access) => sql.unsafe`
     )
 `;
 
-const selectUser = (email) => sql`
+const selectUser = (email) => sql.unsafe`
     SELECT * FROM users
     WHERE email = ${email}
 `;
