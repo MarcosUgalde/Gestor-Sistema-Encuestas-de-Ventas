@@ -41,7 +41,7 @@ function Login() {
                     <p>{formState.errors && errors[formState.errors?.email?.type]}</p>
                 </section>
                 <section>
-                    <label htmlFor="password">Insert email</label>
+                    <label htmlFor="password">Insert password</label>
                     <input type="password" name="password" id="password" placeholder="*********" {...register('password', {required: true, minLength: 4})} />
                     <p>{formState.errors && errors[formState.errors?.password?.type]}</p>
                 </section>
