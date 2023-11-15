@@ -5,11 +5,13 @@ import Login from './pages/Login/index.jsx'
 import Guard from './components/Guard/index.jsx'
 import Provider from './context/Provider.jsx'
 import Mainpage from './pages/Main/index.jsx'
+import Register from './pages/Register/index.jsx'
 
 const Main = () => {
   return (
     <Provider>
       <Switch>
+        <Route path='/register' component={Register} />
         <Route path='/login' component={Login} />
         <Route path='/'>
           <Guard component={Mainpage}/>
