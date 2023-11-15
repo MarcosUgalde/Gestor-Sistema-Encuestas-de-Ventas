@@ -3,4 +3,5 @@ module.exports = {
   getEncuestas: require("./get-encuestas"),
   getOneEncuesta: require("./get-encuesta"),
   editEncuesta: require("./edit-encuesta"),
+  deleteEncuesta: require("./delete-encuesta"),
 };
