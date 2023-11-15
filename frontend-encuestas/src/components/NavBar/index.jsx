@@ -29,6 +29,7 @@ const NavBar = () => {
     return (
         <Styled.Nav>
             <CustomLink href='/' >Main menu</CustomLink>
+            <CustomLink href='/nueva-encuesta'>Nueva encuesta</CustomLink>
             {data && (
                 <Styled.Userlogout>
                 <Styled.User onClick={toggleDropDown}>{data?.username}</Styled.User>
