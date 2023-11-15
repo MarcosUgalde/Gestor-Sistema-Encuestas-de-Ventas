@@ -14,6 +14,11 @@ const insertEncuesta = (
     )
 `;
 
+const selectAllEncuestas = () => sql.unsafe`
+        SELECT * FROM encuestas
+`;
+
 module.exports = {
   insertEncuesta,
+  selectAllEncuestas,
 };
