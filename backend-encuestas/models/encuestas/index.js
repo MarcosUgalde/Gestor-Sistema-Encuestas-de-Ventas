@@ -45,7 +45,7 @@ const getOneEncuesta = (db) => async (id) => {
 
     return {
       ok: true,
-      content: encuesta.rows,
+      data: encuesta.rows,
     };
   } catch (error) {
     console.info("> Select encuesta error: ", error.message);
