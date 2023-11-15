@@ -5,6 +5,7 @@ const encuestasControllers = require("../controllers/encuestas");
 
 module.exports = (db) => {
   router.get("/all", authorizer(), encuestasControllers.getEncuestas(db));
+  router.get("/:id", authorizer(), encuestasControllers.getOneEncuesta(db));
   router.post("/new", authorizer(), encuestasControllers.addEncuesta(db));
 
   return router;
