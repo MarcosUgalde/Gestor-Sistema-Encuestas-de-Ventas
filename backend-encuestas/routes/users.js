@@ -1,10 +1,10 @@
 const router = require("express").Router();
-// const { authorizer } = require("../middlewares");
+const { authorizer } = require("../middlewares");
 
 const usersControllers = require("../controllers/users");
 
 module.exports = () => {
-  router.get("/", usersControllers.getUsers());
+  router.get("/", authorizer(), usersControllers.getUser());
 
   return router;
 };
