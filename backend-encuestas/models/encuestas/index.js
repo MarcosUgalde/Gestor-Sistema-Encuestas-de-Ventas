@@ -24,7 +24,7 @@ const getAllEncuestas = (db) => async () => {
 
     return {
       ok: true,
-      data: encuestas,
+      data: encuestas.rows,
     };
   } catch (error) {
     console.info("> Select encuesta error: ", error.message);
@@ -37,4 +37,5 @@ const getAllEncuestas = (db) => async () => {
 
 module.exports = {
   createEncuesta,
+  getAllEncuestas,
 };
