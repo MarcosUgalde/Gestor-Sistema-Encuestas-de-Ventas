@@ -2,6 +2,7 @@ const {
   insertEncuesta,
   selectAllEncuestas,
   selectOneEncuesta,
+  updateEncuesta,
 } = require("./queries");
 
 const createEncuesta =
@@ -56,8 +57,37 @@ const getOneEncuesta = (db) => async (id) => {
   }
 };
 
+const editEncuesta =
+  (db) =>
+  async (client_dni, product, subproduct, mantenimiento, estado, id) => {
+    try {
+      const response = await db.query(
+        updateEncuesta(
+          client_dni,
+          product,
+          subproduct,
+          mantenimiento,
+          estado,
+          id
+        )
+      );
+
+      return {
+        ok: true,
+        data: response.rows,
+      };
+    } catch (error) {
+      console.info("> Update encuesta rows error: ", error.message);
+      return {
+        ok: false,
+        message: error.message,
+      };
+    }
+  };
+
 module.exports = {
   createEncuesta,
   getAllEncuestas,
   getOneEncuesta,
+  editEncuesta,
 };

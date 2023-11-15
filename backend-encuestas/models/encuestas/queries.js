@@ -23,8 +23,26 @@ const selectOneEncuesta = (id) => sql.unsafe`
         WHERE id = ${id}
 `;
 
+const updateEncuesta = (
+  client_dni,
+  product,
+  subproduct,
+  mantenimiento,
+  estado,
+  id
+) => sql.unsafe`
+        UPDATE encuestas
+        SET client_dni = ${client_dni},
+        product = ${product},
+        subproduct = ${subproduct},
+        mantenimiento = ${mantenimiento},
+        estado = ${estado}
+        WHERE id = ${id}
+`;
+
 module.exports = {
   insertEncuesta,
   selectAllEncuestas,
   selectOneEncuesta,
+  updateEncuesta,
 };
