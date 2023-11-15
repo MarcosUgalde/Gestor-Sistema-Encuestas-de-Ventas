@@ -18,6 +18,7 @@ const createUser = (db) => async (email, username, password, edit_access) => {
 const getUser = (db) => async (email, compareFn) => {
   try {
     const user = await db.maybeOne(selectUser(email));
+    console.log(user);
 
     if (!user)
       return {
@@ -27,6 +28,7 @@ const getUser = (db) => async (email, compareFn) => {
 
     const areEqual = await compareFn(user.password);
 
+    console.log(areEqual);
     if (!areEqual)
       return {
         ok: false,

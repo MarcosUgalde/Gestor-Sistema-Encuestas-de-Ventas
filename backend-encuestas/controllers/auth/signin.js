@@ -4,7 +4,6 @@ const { getUser } = require("../../models/auth");
 
 module.exports = (db) => async (req, res, next) => {
   const { email, password } = req.body;
-  console.log(hash.compare(password));
 
   const response = await getUser(await db)(email, hash.compare(password));
 
