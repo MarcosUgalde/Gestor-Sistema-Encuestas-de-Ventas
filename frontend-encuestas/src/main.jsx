@@ -2,13 +2,18 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Switch, Route, Redirect } from 'wouter'
 import Login from './pages/Login/index.jsx'
+import Guard from './components/Guard/index.jsx'
 import Provider from './context/Provider.jsx'
+import Mainpage from './pages/Main/index.jsx'
 
 const Main = () => {
   return (
     <Provider>
       <Switch>
         <Route path='/login' component={Login} />
+        <Route path='/'>
+          <Guard component={Mainpage}/>
+        </Route>
         <Redirect to='/login'/>
       </Switch>
     </Provider>
