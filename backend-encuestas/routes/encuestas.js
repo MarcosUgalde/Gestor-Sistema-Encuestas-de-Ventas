@@ -8,6 +8,7 @@ module.exports = (db) => {
   router.get("/all", authorizer(), encuestasControllers.getEncuestas(db));
   router.get("/:id", authorizer(), encuestasControllers.getOneEncuesta(db));
   router.put("/:id", authorizer(), encuestasControllers.editEncuesta(db));
+  router.delete("/:id", authorizer(), encuestasControllers.deleteEncuesta(db));
 
   return router;
 };
