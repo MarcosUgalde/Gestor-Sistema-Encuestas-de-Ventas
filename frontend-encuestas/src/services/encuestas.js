@@ -19,3 +19,14 @@ export const infoOneEncuesta = (client) => async (id) => {
     return null;
   }
 };
+
+export const insertEncuesta = (client) => async (params) => {
+  try {
+    const { data } = await client.post("/encuestas/new", params);
+    console.info("Encuesta insertion data: ", data);
+    return data;
+  } catch (error) {
+    console.info("Encuesta insertion error: ", error.message);
+    return { success: false };
+  }
+};
