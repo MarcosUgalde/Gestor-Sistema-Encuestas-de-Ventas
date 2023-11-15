@@ -40,9 +40,15 @@ const updateEncuesta = (
         WHERE id = ${id}
 `;
 
+const deleteEncuesta = (id) => sql.unsafe`
+    DELETE FROM encuestas
+    WHERE id = ${id}
+`;
+
 module.exports = {
   insertEncuesta,
   selectAllEncuestas,
   selectOneEncuesta,
   updateEncuesta,
+  deleteEncuesta,
 };

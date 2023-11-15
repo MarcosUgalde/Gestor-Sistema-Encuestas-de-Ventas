@@ -3,6 +3,7 @@ const {
   selectAllEncuestas,
   selectOneEncuesta,
   updateEncuesta,
+  deleteEncuesta,
 } = require("./queries");
 
 const createEncuesta =
@@ -85,9 +86,27 @@ const editEncuesta =
     }
   };
 
+const eliminateEncuesta = (db) => async (id) => {
+  try {
+    await db.query(deleteEncuesta(id));
+
+    return {
+      ok: true,
+    };
+  } catch (error) {
+    console.info("> Encuesta elimination error: ", error.message);
+
+    return {
+      ok: false,
+      message: error.message,
+    };
+  }
+};
+
 module.exports = {
   createEncuesta,
   getAllEncuestas,
   getOneEncuesta,
   editEncuesta,
+  eliminateEncuesta,
 };
