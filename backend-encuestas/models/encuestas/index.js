@@ -1,4 +1,8 @@
-const { insertEncuesta, selectAllEncuestas } = require("./queries");
+const {
+  insertEncuesta,
+  selectAllEncuestas,
+  selectOneEncuesta,
+} = require("./queries");
 
 const createEncuesta =
   (db) => async (client_dni, product, subproduct, mantenimiento, estado) => {
@@ -35,7 +39,25 @@ const getAllEncuestas = (db) => async () => {
   }
 };
 
+const getOneEncuesta = (db) => async (id) => {
+  try {
+    const encuesta = await db.query(selectOneEncuesta(id));
+
+    return {
+      ok: true,
+      content: encuesta.rows,
+    };
+  } catch (error) {
+    console.info("> Select encuesta error: ", error.message);
+    return {
+      ok: false,
+      message: error.message,
+    };
+  }
+};
+
 module.exports = {
   createEncuesta,
   getAllEncuestas,
+  getOneEncuesta,
 };
