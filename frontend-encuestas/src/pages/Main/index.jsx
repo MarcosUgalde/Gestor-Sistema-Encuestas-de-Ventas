@@ -1,3 +1,4 @@
+import Styled from './styles'
 import NavBar from "../../components/NavBar"
 import { Link } from 'wouter'
 import { useEncuestas } from "../../hooks"
@@ -16,17 +17,17 @@ function Mainpage () {
         <>
             <NavBar />
             <h1>Encuestas</h1>
-            <section>
+            <Styled.List>
             {response?.content?.map((encuesta) => (
-                    <Link href={`/encuestas/${encuesta.id}`} key={encuesta.id}>
+                    <Link href={`/update/${encuesta.id}`} key={encuesta.id}>
                         <a>
                             {encuesta.product}
                         </a>
                     </Link>
                     
                 )
-                )}
-            </section>
+                )} 
+            </Styled.List>
         </>
     )
 }
