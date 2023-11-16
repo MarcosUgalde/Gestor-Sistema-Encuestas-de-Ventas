@@ -1,7 +1,8 @@
 import NavBar from "../../components/NavBar"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
-import { useId, useOneEncuesta, useUpdate } from "../../hooks"
+import { useDelete, useId, useOneEncuesta, useUpdate } from "../../hooks"
+import DeleteModal from "../../components/DeleteModal"
 
 function Update() {
 const { register, handleSubmit } = useForm()
@@ -9,8 +10,25 @@ const id = useId()
 const encuesta = useOneEncuesta({ encuestaId: id})
 console.log('Encuesta cargada: ', encuesta?.response)
 
+const [isDeleteModalVisible, setDeleteModalVisible] = useState(false)
+const [encuestaIdToDelete, setEncuestaIdToDelete] = useState(null)
 
 const doUpdate = useUpdate()
+const doDelete = useDelete()
+
+const openDeleteModal = (id) => {
+    setEncuestaIdToDelete(id)
+    setDeleteModalVisible(true)
+    return id
+}
+
+const handleDelete = () => {
+    if(encuestaIdToDelete) {
+        console.log('Deleting product with id: ', encuestaIdToDelete)
+        doDelete(encuestaIdToDelete)
+    }
+    setDeleteModalVisible(false)
+}
 
 const [selectedProduct, setSelectedProduct] = useState('')
 const [showTarifaSubproduct, setShowTarifaSubproduct] = useState(false);
@@ -97,8 +115,12 @@ const handleProductSelect = (selectedValue) => {
                     <option value="NO VENDIDO">NO VENDIDO</option>
                     <option value="NO VÁLIDO">NO VÁLIDO</option>
                 </select>
-                <input type="submit" value='Update' />
+                <input type="submit" value='Guardar cambios' />
+                <button onClick={() =>openDeleteModal(id)}>Borrar registro</button>
             </form>
+            {isDeleteModalVisible && (
+                <DeleteModal productId={encuestaIdToDelete} isVisible={isDeleteModalVisible} onClose={() => setDeleteModalVisible(false)} onDelete={handleDelete} />
+            )}
         </>
     )
 }
