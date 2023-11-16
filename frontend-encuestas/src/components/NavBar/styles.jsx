@@ -1,8 +1,10 @@
 import { styled } from 'styled-components'
 
 const Nav = styled.nav`
+    height: 5vh;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     font-size: 1.2rem;
     gap: 1.1em;
     background-color: #22333b;

@@ -14,21 +14,23 @@ function Mainpage () {
     }
 
     return (
-        <>
-            <NavBar />
-            <h1>Encuestas</h1>
-            <Styled.List>
-            {response?.content?.map((encuesta) => (
-                    <Link href={`/update/${encuesta.id}`} key={encuesta.id}>
-                        <a>
-                            {encuesta.product}
-                        </a>
-                    </Link>
-                    
-                )
-                )} 
-            </Styled.List>
-        </>
+        
+            <Styled.Body>
+                <NavBar />
+                <h1>Todas las encuestas</h1>
+                <Styled.List>
+                {response?.content?.map((encuesta) => (
+                        <Link href={`/update/${encuesta.id}`} key={encuesta.id}>
+                            <Styled.Anchor>
+                                {encuesta.client_dni}
+                            </Styled.Anchor>
+                        </Link>
+                        
+                    )
+                    )} 
+                </Styled.List>
+            </Styled.Body>
+        
     )
 }
 
