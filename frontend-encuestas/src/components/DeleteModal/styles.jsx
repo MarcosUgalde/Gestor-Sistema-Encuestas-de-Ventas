@@ -1,9 +1,11 @@
 import { styled } from 'styled-components'
 
 const Modal = styled.section`
-    position: fixed;
-    width: 70%;
-    height: 70%;
+    position: fixed;;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
     overflow: auto;
@@ -15,22 +17,33 @@ const Modal = styled.section`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding-top: 30px;
+        /* padding-top: 30px; */
     }
 
     h2 {
         color: red;
     }
 
-    p {
-        color: white;
-    }
+`
+
+const Text = styled.div`
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+    border-radius: 10px;
+    margin-top: 10%;
+    margin-left: 20%;
 `
 
 const Buttons = styled.section`
     display: flex;
     justify-content: space-evenly;
     padding-top: 3em;
+    width: 500px;
 `
 
 const Delete = styled.button`
@@ -65,6 +78,7 @@ const Cancel = styled.button`
 
 export default {
     Modal,
+    Text,
     Buttons,
     Delete,
     Cancel
