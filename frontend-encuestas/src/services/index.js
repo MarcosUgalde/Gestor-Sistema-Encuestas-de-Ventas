@@ -2,6 +2,7 @@ import axios from "axios";
 import { register, logout, signin } from "./auth";
 import { info } from "./user";
 import {
+  deleteEncuesta,
   editEncuesta,
   infoEncuestas,
   infoOneEncuesta,
@@ -28,6 +29,7 @@ const encuestas = {
   getOneEncuesta: infoOneEncuesta(client),
   addEncuesta: insertEncuesta(client),
   updateEncuesta: editEncuesta(client),
+  eliminateEncuesta: deleteEncuesta(client),
 };
 
 export { auth, user, encuestas };

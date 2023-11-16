@@ -33,11 +33,22 @@ export const insertEncuesta = (client) => async (params) => {
 
 export const editEncuesta = (client) => async (params) => {
   try {
-    const { data } = await client.put(`encuestas/${params.id}`, params);
+    const { data } = await client.put(`encuestas/${params.encuestaId}`, params);
     console.info("Encuesta update completed: ", data);
     return data;
   } catch (error) {
     console.info("Update encuesta service error: ", error.message);
+    return { success: false };
+  }
+};
+
+export const deleteEncuesta = (client) => async (params) => {
+  try {
+    const { data } = await client.delete(`encuestas/${params}`, params);
+    console.info("Encuesta delete completed");
+    return data;
+  } catch (error) {
+    console.info("Delete encuesta service error: ", error.message);
     return { success: false };
   }
 };
