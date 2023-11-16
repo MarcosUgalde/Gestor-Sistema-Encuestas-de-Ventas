@@ -1,9 +1,19 @@
 import NavBar from "../../components/NavBar"
 import { subproduct, mantenimiento } from '../../utils'
+import { useState } from "react"
 
 function Create() {
 console.log(subproduct) 
 console.log(mantenimiento)
+const [selectedProduct, setSelectedProduct] = useState('')
+const [showTarifaSubproduct, setShowTarifaSubproduct] = useState(false);
+const [showGasSubproduct, setShowGasSubproduct] = useState(false);
+
+const handleProductSelect = (selectedValue) => {
+    setSelectedProduct(selectedValue);
+    setShowTarifaSubproduct(selectedValue === 'Luz' || selectedValue === 'Dual');
+    setShowGasSubproduct(selectedValue === 'Gas' || selectedValue === 'Dual');
+  };
 
     return (
         <>
@@ -13,17 +23,30 @@ console.log(mantenimiento)
                 <label htmlFor="client_dni">Inserte su DNI</label>
                 <input type="text" name="client_dni" id="client_dni" />
                 <label htmlFor="product">Seleccione un producto</label>
-                <select name="product" id="product">
+                <select name="product" id="product" onChange={(e) => handleProductSelect(e.target.value)}>
                     <option value="Luz">LUZ</option>
                     <option value="Gas">GAS</option>
                     <option value="Dual">DUAL</option>
                 </select>
-                <label htmlFor="subproduct">Elija una opción</label>
-                <select name="subproduct" id="subproduct">
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                </select>
+                {showTarifaSubproduct && (
+                    <div>
+                    <label htmlFor="subproduct">Elija una opción para subproducto LUZ</label>
+                    <select name="subproduct" id="subproduct">
+                        <option value="Tarifa plana">TARIFA PLANA</option>
+                        <option value="Tarifa por uso">TARIFA POR USO</option>
+                    </select>
+                    </div>
+                )}
+
+                {showGasSubproduct && (
+                    <div>
+                        <label htmlFor="subproduct">Elija una opción para subproducto GAS</label>
+                        <select name="subproduct" id="subproduct">
+                            <option value="Plana">PLENA</option>
+                            <option value="Total">TOTAL</option>
+                        </select>
+                    </div>
+                )}
                 <label htmlFor="mantenimiento">Mantenimiento</label>
                 <select name="" id=""></select>
                 <label htmlFor="estado">Estado</label>
