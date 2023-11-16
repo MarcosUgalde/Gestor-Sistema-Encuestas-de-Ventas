@@ -89,6 +89,7 @@ const handleProductSelect = (selectedValue) => {
                     <option value="">NO VENDIDO</option>
                     <option value="">NO VÁLIDO</option>
                 </select>
+                <input type="submit" />
             </form>
         </>
     )
