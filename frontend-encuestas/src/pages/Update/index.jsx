@@ -1,7 +1,7 @@
 import NavBar from "../../components/NavBar"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
-import { useDelete, useId, useOneEncuesta, useUpdate } from "../../hooks"
+import { useDelete, useId, useOneEncuesta, useUpdate, useUser } from "../../hooks"
 import DeleteModal from "../../components/DeleteModal"
 
 function Update() {
@@ -9,7 +9,7 @@ const { register, handleSubmit } = useForm()
 const id = useId()
 const encuesta = useOneEncuesta({ encuestaId: id})
 console.log('Encuesta cargada: ', encuesta?.response)
-
+const authorized = useUser().data.access
 const [isDeleteModalVisible, setDeleteModalVisible] = useState(false)
 const [encuestaIdToDelete, setEncuestaIdToDelete] = useState(null)
 
@@ -23,6 +23,7 @@ const openDeleteModal = (id) => {
 }
 
 const handleDelete = () => {
+    if(!authorized) return alert('¡No estás autorizado para realizar esta acción!')
     if(encuestaIdToDelete) {
         console.log('Deleting product with id: ', encuestaIdToDelete)
         doDelete(encuestaIdToDelete)
@@ -115,7 +116,11 @@ const handleProductSelect = (selectedValue) => {
                     <option value="NO VENDIDO">NO VENDIDO</option>
                     <option value="NO VÁLIDO">NO VÁLIDO</option>
                 </select>
-                <input type="submit" value='Guardar cambios' />
+                {authorized ? (
+                    <input type="submit" value="Guardar cambios" />
+                ) : (
+                    <p>You are not authorized to save changes.</p>
+                )}
                 <button onClick={() =>openDeleteModal(id)}>Borrar registro</button>
             </form>
             {isDeleteModalVisible && (
