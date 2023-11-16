@@ -1,7 +1,12 @@
 import axios from "axios";
 import { register, logout, signin } from "./auth";
 import { info } from "./user";
-import { infoEncuestas, infoOneEncuesta, insertEncuesta } from "./encuestas";
+import {
+  editEncuesta,
+  infoEncuestas,
+  infoOneEncuesta,
+  insertEncuesta,
+} from "./encuestas";
 
 const client = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -22,6 +27,7 @@ const encuestas = {
   getEncuestas: infoEncuestas(client),
   getOneEncuesta: infoOneEncuesta(client),
   addEncuesta: insertEncuesta(client),
+  updateEncuesta: editEncuesta(client),
 };
 
 export { auth, user, encuestas };

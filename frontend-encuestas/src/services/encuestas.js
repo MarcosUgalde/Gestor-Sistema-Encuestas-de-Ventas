@@ -30,3 +30,14 @@ export const insertEncuesta = (client) => async (params) => {
     return { success: false };
   }
 };
+
+export const editEncuesta = (client) => async (params) => {
+  try {
+    const { data } = await client.put(`encuestas/${params.id}`, params);
+    console.info("Encuesta update completed: ", data);
+    return data;
+  } catch (error) {
+    console.info("Update encuesta service error: ", error.message);
+    return { success: false };
+  }
+};
