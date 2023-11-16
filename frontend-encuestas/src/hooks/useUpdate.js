@@ -9,7 +9,7 @@ export const useUpdate = () => {
     mutationFn: encuestas.updateEncuesta,
     onSuccess: (data) => {
       if (data.success) setLocation("/");
-      console.info("> Encuesta update completed");
+      console.info("> Encuesta update completed: ", data);
     },
   });
 

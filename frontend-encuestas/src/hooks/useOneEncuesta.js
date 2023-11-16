@@ -6,6 +6,6 @@ export const useOneEncuesta = (props) => {
     queryKey: ["encuesta", props?.encuestaId],
     queryFn: encuestas.getOneEncuesta(props?.encuestaId),
   });
-  console.log("hook response: ", data);
+  console.log("hook response: ", data?.content);
   return { data, isLoading };
 };
