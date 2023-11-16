@@ -7,6 +7,7 @@ import Provider from './context/Provider.jsx'
 import Mainpage from './pages/Main/index.jsx'
 import Register from './pages/Register/index.jsx'
 import Create from './pages/Createencuesta/index.jsx'
+import Update from './pages/Update/index.jsx'
 
 const Main = () => {
   return (
@@ -19,6 +20,9 @@ const Main = () => {
         </Route>
         <Route path='/nueva-encuesta'>
           <Guard component={Create} />
+        </Route>
+        <Route path='/update/:id'>
+          <Guard component={Update} />
         </Route>
         <Redirect to='/login'/>
       </Switch>
