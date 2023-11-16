@@ -13,7 +13,7 @@ export const infoOneEncuesta = (client) => async (id) => {
   try {
     const { data: response } = await client.get(`/encuestas/${id}`);
     console.info("Encuesta info: ", response);
-    return response.data;
+    return response;
   } catch (error) {
     console.info("Encuesta info error: ", error.message);
     return null;

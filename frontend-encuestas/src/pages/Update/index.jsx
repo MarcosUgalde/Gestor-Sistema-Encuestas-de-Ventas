@@ -8,7 +8,8 @@ function Update() {
 const { register, handleSubmit } = useForm()
 const id = useId()
 const encuesta = useOneEncuesta({ encuestaId: id})
-console.log('Encuesta cargada: ', encuesta?.response)
+console.log(encuesta)
+
 const authorized = useUser().data.access
 const [isDeleteModalVisible, setDeleteModalVisible] = useState(false)
 const [encuestaIdToDelete, setEncuestaIdToDelete] = useState(null)
@@ -54,9 +55,9 @@ const handleProductSelect = (selectedValue) => {
                 <h1>Modificar encuesta {id}</h1>
                 <input type="hidden" name="encuestaId" id="encuestaId" {...register('encuestaId', {required: true})} value={id}  />
                 <label htmlFor="client_dni">Inserte su DNI</label>
-                <input type="text" name="client_dni" id="client_dni" {...register('client_dni', {required: true})} />
+                <input type="text" name="client_dni" id="client_dni" {...register('client_dni', {required: true})} defaultValue={encuesta?.data?.content[0]?.client_dni} />
                 <label htmlFor="product">Seleccione un producto</label>
-                <select name="product" id="product" {...register('product', {required: true})} onChange={(e) => {handleProductSelect(e.target.value);}}  >
+                <select name="product" id="product" {...register('product', {required: true})} onChange={(e) => {handleProductSelect(e.target.value);}} defaultValue={encuesta?.data?.content[0]?.product} >
                     <option value="Luz">LUZ</option>
                     <option value="Gas">GAS</option>
                     <option value="Dual">DUAL</option>
@@ -84,7 +85,7 @@ const handleProductSelect = (selectedValue) => {
                         <div>
                             <label htmlFor="mantenimiento">Mantenimiento</label>
                     
-                                <select name="mantenimiento" id="mantenimiento" {...register('mantenimiento', { required: true })}>
+                                <select name="mantenimiento" id="mantenimiento" {...register('mantenimiento', { required: true })} >
                                     <option value="SÍ">SÍ</option>
                                     <option value="NO">NO</option>
                                 </select>
