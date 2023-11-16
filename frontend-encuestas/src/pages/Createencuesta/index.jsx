@@ -8,11 +8,17 @@ console.log(mantenimiento)
 const [selectedProduct, setSelectedProduct] = useState('')
 const [showTarifaSubproduct, setShowTarifaSubproduct] = useState(false);
 const [showGasSubproduct, setShowGasSubproduct] = useState(false);
+const [showMantenimiento, setShowMantenimiento] = useState(false);
+const [showMantenimientoLuz, setShowMantenimientoLuz] = useState(false);
+const [showMantenimientoGas, setShowMantenimientoGas] = useState(false);
 
 const handleProductSelect = (selectedValue) => {
     setSelectedProduct(selectedValue);
     setShowTarifaSubproduct(selectedValue === 'Luz' || selectedValue === 'Dual');
     setShowGasSubproduct(selectedValue === 'Gas' || selectedValue === 'Dual');
+    setShowMantenimiento(selectedValue === 'Luz' || selectedValue === 'Gas');
+    setShowMantenimientoLuz(selectedValue === 'Dual');
+    setShowMantenimientoGas(selectedValue === 'Dual');
   };
 
     return (
@@ -47,8 +53,35 @@ const handleProductSelect = (selectedValue) => {
                         </select>
                     </div>
                 )}
-                <label htmlFor="mantenimiento">Mantenimiento</label>
-                <select name="" id=""></select>
+                    {showMantenimiento && (
+                        <div>
+                            <label htmlFor="mantenimiento">Mantenimiento</label>
+                    
+                                <select name="mantenimiento" id="mantenimiento">
+                                    <option value="SÍ">SÍ</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                        </div>
+                    )}
+                    {showMantenimientoLuz && (
+                        <div>
+                            <label htmlFor="mantenimiento">Mantenimientos LUZ</label>
+                                <select name="mantenimiento" id="mantenimiento">
+                                    <option value="SÍ">SÍ</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                        </div>
+                    )}
+                    {showMantenimientoGas && (
+                        <div>
+                            <label htmlFor="mantenimiento">Mantenimientos GAS</label>
+                                <select name="mantenimiento" id="mantenimiento">
+                                    <option value="SÍ">SÍ</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                        </div>
+                    )}
+
                 <label htmlFor="estado">Estado</label>
                 <select name="" id="">
                     <option value="">VENDIDO</option>
