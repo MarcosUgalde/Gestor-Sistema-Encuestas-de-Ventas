@@ -1,6 +1,10 @@
 import NavBar from "../../components/NavBar"
+import { subproduct, mantenimiento } from '../../utils'
 
 function Create() {
+console.log(subproduct) 
+console.log(mantenimiento)
+
     return (
         <>
             <NavBar />
