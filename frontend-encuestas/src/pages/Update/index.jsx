@@ -56,7 +56,7 @@ const handleProductSelect = (selectedValue) => {
                 <label htmlFor="client_dni">Inserte su DNI</label>
                 <input type="text" name="client_dni" id="client_dni" {...register('client_dni', {required: true})} />
                 <label htmlFor="product">Seleccione un producto</label>
-                <select name="product" id="product" onChange={(e) => {handleProductSelect(e.target.value);}} {...register('product', {required: true})} >
+                <select name="product" id="product" {...register('product', {required: true})} onChange={(e) => {handleProductSelect(e.target.value);}}  >
                     <option value="Luz">LUZ</option>
                     <option value="Gas">GAS</option>
                     <option value="Dual">DUAL</option>
