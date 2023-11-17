@@ -1,3 +1,4 @@
+import Styled from './styles'
 import { useForm } from "react-hook-form"
 import { useMutation, useQueryClient } from "react-query"
 import { useLocation } from 'wouter'
@@ -32,22 +33,28 @@ function Login() {
     const { errors } = login
 
     return (
-        <>
-            <form onSubmit={handleSubmit(handleForm)}>
+        <Styled.Body>
+            <Styled.Form onSubmit={handleSubmit(handleForm)}>
                 <h1>Login</h1>
-                <section>
+                <Styled.Field>
                     <label htmlFor="email">Insert email</label>
-                    <input type="text" name="email" id="email" placeholder="example@gmail.com" {...register('email', {required: true})} />
+                    <Styled.Input type="text" name="email" id="email" placeholder="example@gmail.com" {...register('email', {required: true})} />
                     <p>{formState.errors && errors[formState.errors?.email?.type]}</p>
-                </section>
-                <section>
+                </Styled.Field>
+                <Styled.Field>
                     <label htmlFor="password">Insert password</label>
-                    <input type="password" name="password" id="password" placeholder="*********" {...register('password', {required: true, minLength: 4})} />
+                    <Styled.Input type="password" name="password" id="password" placeholder="*********" {...register('password', {required: true, minLength: 4})} />
                     <p>{formState.errors && errors[formState.errors?.password?.type]}</p>
-                </section>
+                </Styled.Field>
                 <input type="submit" />
-            </form>
-        </>
+            </Styled.Form>
+            <Styled.Footer>
+                <p>Do not have an account yet?</p>
+                <Styled.Signup>
+                    <Styled.Anchor href='/register'>Sign up here!</Styled.Anchor>
+                </Styled.Signup>
+            </Styled.Footer>
+        </Styled.Body>
     )
 }
 
