@@ -167,3 +167,15 @@ DELETE /encuestas/:id
 ```
 
 ### Frontend
+
+El frontend se ha creado con React. La conexión con el backend se realiza a través de axios. Para las rutas se ha utilizado wouter.
+
+Para empezar se crean dos formularios de registro y acceso de usuarios, en los que se puede introducir el email y la contraseña. La página de registro también incluye un imput para indicar el nombre de usuario y para establecer el permiso de edición.
+
+En la página principal se ha cargado toda la información de la base de datos en una tabla. Desde aquí podemos acceder a la página de editar un registro pulsando en el DNI del cliente, así como a la página de crear nuevas encuestas, cuyo link se encuentra en el navbar.
+
+Estas dos páginas son muy similares en estructura. Ambas son un formulario con los mismos campos a rellenar y un botón de crear/modificar para mandar la información a la base de datos. La página de editar cuenta además con un botón para eliminar una encuesta.
+
+Todas las funcionalidades para hacer peticiones a la base de datos se han optimizado mediante la creación de customhooks debidamente organizados. Asímismo, los componentes como el Nav bar o el modal que se despliega para elimiar un registro también se han organizado aparte para poder renderizarlos cuando sea necesario.
+
+También se han creado un componente que restringe el acceso a la aplicación solo a usuarios que pasen el proceso de autenticación.
