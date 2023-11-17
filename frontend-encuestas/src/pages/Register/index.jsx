@@ -54,9 +54,9 @@ function Register() {
             <Styled.Submit type="submit" />
         </Styled.Form>
         <Styled.Footer>
-        <p>Already have an account?</p> 
+        <p>¿Ya tienes una cuenta?</p> 
         <Styled.Signup>
-          <Styled.Anchor href='/login'>Login here!</Styled.Anchor>
+          <Styled.Anchor href='/login'>Accede aquí</Styled.Anchor>
         </Styled.Signup>
       </Styled.Footer>
         </Styled.Body>

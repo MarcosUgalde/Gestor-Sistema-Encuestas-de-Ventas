@@ -46,12 +46,12 @@ function Login() {
                     <Styled.Input type="password" name="password" id="password" placeholder="*********" {...register('password', {required: true, minLength: 4})} />
                     <p>{formState.errors && errors[formState.errors?.password?.type]}</p>
                 </Styled.Field>
-                <input type="submit" />
+                <Styled.Input type="submit" />
             </Styled.Form>
             <Styled.Footer>
-                <p>Do not have an account yet?</p>
+                <p>¿Todavía no tienes cuenta?</p>
                 <Styled.Signup>
-                    <Styled.Anchor href='/register'>Sign up here!</Styled.Anchor>
+                    <Styled.Anchor href='/register'>Registrate aquí</Styled.Anchor>
                 </Styled.Signup>
             </Styled.Footer>
         </Styled.Body>
