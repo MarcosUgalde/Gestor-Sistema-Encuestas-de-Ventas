@@ -33,19 +33,23 @@ const handleDelete = () => {
 }
 
 const [selectedProduct, setSelectedProduct] = useState('')
-const [showTarifaSubproduct, setShowTarifaSubproduct] = useState(false);
-const [showGasSubproduct, setShowGasSubproduct] = useState(false);
-const [showMantenimiento, setShowMantenimiento] = useState(false);
-const [showMantenimientoLuz, setShowMantenimientoLuz] = useState(false);
-const [showMantenimientoGas, setShowMantenimientoGas] = useState(false);
+const [lightOptions, setLightOptions] = useState(selectedProduct === "Luz" || selectedProduct === "Dual")
+const [gasOptions, setGasOptions] = useState(selectedProduct === "Gas" || selectedProduct === "Dual")
+// const [showTarifaSubproduct, setShowTarifaSubproduct] = useState(false);
+// const [showGasSubproduct, setShowGasSubproduct] = useState(false);
+// const [showMantenimiento, setShowMantenimiento] = useState(false);
+// const [showMantenimientoLuz, setShowMantenimientoLuz] = useState(false);
+// const [showMantenimientoGas, setShowMantenimientoGas] = useState(false);
 
 const handleProductSelect = (selectedValue) => {
     setSelectedProduct(selectedValue);
-    setShowTarifaSubproduct(selectedValue === 'Luz' || selectedValue === 'Dual');
-    setShowGasSubproduct(selectedValue === 'Gas' || selectedValue === 'Dual');
-    setShowMantenimiento(selectedValue === 'Luz' || selectedValue === 'Gas');
-    setShowMantenimientoLuz(selectedValue === 'Dual');
-    setShowMantenimientoGas(selectedValue === 'Dual');
+    setLightOptions(selectedValue === 'Luz' || selectedValue === 'Dual');
+    setGasOptions(selectedValue === 'Gas' || selectedValue === 'Dual');
+    // setShowTarifaSubproduct(selectedValue === 'Luz' || selectedValue === 'Dual');
+    // setShowGasSubproduct(selectedValue === 'Gas' || selectedValue === 'Dual');
+    // setShowMantenimiento(selectedValue === 'Luz' || selectedValue === 'Gas');
+    // setShowMantenimientoLuz(selectedValue === 'Dual');
+    // setShowMantenimientoGas(selectedValue === 'Dual');
   };
 
     return (
@@ -62,26 +66,60 @@ const handleProductSelect = (selectedValue) => {
                     <option value="Gas">GAS</option>
                     <option value="Dual">DUAL</option>
                 </select>
-                {showTarifaSubproduct && (
-                    <div>
-                    <label htmlFor="subproduct">Elija una opción para subproducto LUZ</label>
-                    <select name="subproduct" id="subproduct" {...register('subproduct', {required: true})}>
-                        <option value="Tarifa plana">TARIFA PLANA</option>
-                        <option value="Tarifa por uso">TARIFA POR USO</option>
-                    </select>
-                    </div>
+                {lightOptions && (
+                    // <div>
+                    // <label htmlFor="subproduct">Elija una opción para subproducto LUZ</label>
+                    // <select name="subproduct" id="subproduct" {...register('subproduct', {required: true})}>
+                    //     <option value="Tarifa plana">TARIFA PLANA</option>
+                    //     <option value="Tarifa por uso">TARIFA POR USO</option>
+                    // </select>
+                    // </div>
+                    <>
+                        <div>
+                            <label htmlFor="subproduct">Elija una opción para subproducto LUZ</label>
+                            <select name="subproduct" id="subproduct" {...register('subproduct_light', {required: true})}>
+                                <option value="Tarifa plana">TARIFA PLANA</option>
+                                <option value="Tarifa por uso">TARIFA POR USO</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label htmlFor="mantenimiento">Mantenimientos LUZ</label>
+                                <select name="mantenimiento" id="mantenimiento" {...register('maintenance_light', { required: true })}>
+                                    <option value="SÍ">SÍ</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                        </div>
+                    </>
                 )}
 
-                {showGasSubproduct && (
-                    <div>
-                        <label htmlFor="subproduct">Elija una opción para subproducto GAS</label>
-                        <select name="subproduct" id="subproduct" {...register('subproduct', {required: true})}>
-                            <option value="Plena">PLENA</option>
-                            <option value="Total">TOTAL</option>
-                        </select>
-                    </div>
+                {gasOptions && (
+                    // <div>
+                    //     <label htmlFor="subproduct">Elija una opción para subproducto GAS</label>
+                    //     <select name="subproduct" id="subproduct" {...register('subproduct', {required: true})}>
+                    //         <option value="Plena">PLENA</option>
+                    //         <option value="Total">TOTAL</option>
+                    //     </select>
+                    // </div>
+                    <>
+                        <div>
+                            <label htmlFor="subproduct">Elija una opción para subproducto GAS</label>
+                            <select name="subproduct" id="subproduct" {...register('subproduct_gas', {required: true})}>
+                                <option value="Plena">PLENA</option>
+                                <option value="Total">TOTAL</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label htmlFor="mantenimiento">Mantenimientos GAS</label>
+                                <select name="mantenimiento" id="mantenimiento" {...register('maintenance_gas', { required: true })}>
+                                    <option value="SÍ">SÍ</option>
+                                    <option value="NO">NO</option>
+                                </select>
+                        </div>
+                    </>
                 )}
-                    {showMantenimiento && (
+                    {/* {showMantenimiento && (
                         <div>
                             <label htmlFor="mantenimiento">Mantenimiento</label>
                     
@@ -108,7 +146,7 @@ const handleProductSelect = (selectedValue) => {
                                     <option value="NO">NO</option>
                                 </select>
                         </div>
-                    )}
+                    )} */}
 
                 <label htmlFor="estado">Estado</label>
                 <select name="estado" id="estado" {...register('estado', { required: true })}>
