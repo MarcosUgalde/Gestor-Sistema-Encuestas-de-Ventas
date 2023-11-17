@@ -101,3 +101,69 @@ Esto nos llevará de nuevo al panel principal, donde la aplicación funcionará 
 ### Backend
 
 La base de datos consta de dos tablas de sql. Una para los usuarios y otra para las encuestas.
+
+El backend se ha creado con Node.js para poder establecer una arquitectura modelo-controlador-ruta utilizando express.js.
+
+Se han creado tres modelos con sus controladores: uno para las queries a la tabla de encuestas, otro para controlar los procesos de autenticación y creación de usuarios y por último uno para obtener y utilizar la información del usuario logeado.
+
+Para la información del usuario logeado hay un único endpoint:
+
+```
+GET /users
+```
+
+que recupera el nombre de usuario, email y los permisos del usuario logeado.
+
+Para la autenticación hay tres endpoints distintos:
+
+```
+POST /auth/signup
+```
+
+para la creación de un usuario nuevo;
+
+```
+POST /auth/signin
+```
+
+para el login de un usuario ya creado;
+
+```
+POST /auth/signout
+```
+
+para deslogear.
+
+Para las queries relacionadas con las encuestas:
+
+```
+POST /encuestas/new
+```
+
+para añadir una nueva encuesta a la base de datos;
+
+```
+GET /encuestas/all
+```
+
+para recuperar todas las encuestas registradas;
+
+```
+GET /encuestas/:id
+```
+
+para recuperar una única encuesta de la base de datos;
+
+El endpoint que nos permite modificar una encuesta de la base de datos es el siguiente:
+
+```
+PUT /encuestas/:id
+```
+
+Así mismo, para eliminar una encuesta de la base de datos el endpoint es:
+
+```
+DELETE /encuestas/:id
+```
+
+### Frontend
