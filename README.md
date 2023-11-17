@@ -8,7 +8,9 @@ Una vez clonado el repositorio en nuestro local deberemos abrir dos terminales: 
 
 En la terminal de backend deberemos instalar todas las dependencias de node indicadas en el documento package.json con el comando npm i:
 
+```
 npm i cookie-parser cors express simple-stateless-auth-library slonik uuid
+```
 
 También se deberán instalar las devDependencies:
 
@@ -77,3 +79,9 @@ Tras salir de nuestro usuario volveremos a la página de login, donde introducir
 - contraseña: 1234
 
 Esto nos llevará de nuevo al panel principal, donde la aplicación funcionará de la misma manera que con el anterior usuario, con la diferencia de que si tratamos de modificar un registro no nos aparecerán los botones de "Guardar Cambios" ni eliminar.
+
+## Definición técnica
+
+### Backend
+
+La base de datos consta de dos tablas de sql. Una para los usuarios y otra para las encuestas.
