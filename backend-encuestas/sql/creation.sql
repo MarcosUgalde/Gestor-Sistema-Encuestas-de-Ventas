@@ -15,7 +15,9 @@ CREATE TABLE IF NOT EXISTS encuestas (
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
     client_dni TEXT NOT NULL UNIQUE,
     product TEXT NOT NULL,
-    subproduct TEXT NOT NULL,
-    mantenimiento TEXT NOT NULL,
+    subproduct_gas TEXT DEFAULT NULL,
+    subproduct_light TEXT DEFAULT NULL,
+    maintenance_gas TEXT DEFAULT NULL,
+    maintenance_light TEXT DEFAULT NULL,
     estado TEXT NOT NULL
 )
