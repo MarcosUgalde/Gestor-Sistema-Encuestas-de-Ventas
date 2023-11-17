@@ -1,3 +1,4 @@
+import Styled from './styles'
 import { useForm } from 'react-hook-form'
 import { useMutation } from 'react-query'
 import { useLocation } from 'wouter'
@@ -25,34 +26,40 @@ function Register() {
   const { errors } = login
 
     return (
-        <>
-        <form onSubmit={handleSubmit(handleForm)}>
+        <Styled.Body>
+        <Styled.Form onSubmit={handleSubmit(handleForm)}>
             <h1>Register</h1>
-            <section>
+            <Styled.Field>
                 <label htmlFor="email">Email</label>
-                <input type="text" id='email' placeholder='example@gmail.com' {...register('email', {required: true})} />
+                <Styled.Input type="text" id='email' placeholder='example@gmail.com' {...register('email', {required: true})} />
                 <p>{formState.errors && errors[formState.errors?.email?.type]}</p>
-            </section>
-            <section>
+            </Styled.Field>
+            <Styled.Field>
                 <label htmlFor="username">Username</label>
-                <input type="text" id='username' placeholder='username' {...register("username", { required: true})} />
+                <Styled.Input type="text" id='username' placeholder='username' {...register("username", { required: true})} />
                 <p>{formState.errors && errors[formState.errors?.username?.type]}</p>
-            </section>
-            <section>
+            </Styled.Field>
+            <Styled.Field>
                 <label htmlFor="password">Password</label>
-                <input type="text" id='password' placeholder='Length must be at least 4' {...register('password', {required: true, minLength: 4})} />
+                <Styled.Input type="text" id='password' placeholder='Length must be at least 4' {...register('password', {required: true, minLength: 4})} />
                 <p>{formState.errors && errors[formState.errors?.password?.type]}</p>
-            </section>
-            <section>
+            </Styled.Field>
+            <Styled.Field>
                 <label htmlFor="edit_access">Authorized to edit?</label>
                 <select name="edit_access" id="edit_access" {...register('edit_access', {required: true})}>
                     <option value="false">No</option>
                     <option value="true">Yes</option>
                 </select>
-            </section>
-            <input type="submit" />
-        </form>
-        </>
+            </Styled.Field>
+            <Styled.Submit type="submit" />
+        </Styled.Form>
+        <Styled.Footer>
+        <p>Already have an account?</p> 
+        <Styled.Signup>
+          <Styled.Anchor href='/login'>Login here!</Styled.Anchor>
+        </Styled.Signup>
+      </Styled.Footer>
+        </Styled.Body>
     )
 }
 
