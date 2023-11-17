@@ -1,3 +1,4 @@
+import Styled from './styles'
 import NavBar from "../../components/NavBar"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
@@ -42,83 +43,85 @@ const handleProductSelect = (selectedValue) => {
   };
 
     return (
-        <>
+        <Styled.Body>
             <NavBar />
-            <form onSubmit={handleSubmit(doUpdate)}>
-                <h1>Modificar encuesta {id}</h1>
+            <Styled.Form onSubmit={handleSubmit(doUpdate)}>
+                <h1>Modificar encuesta del cliente: <i>{encuesta?.data?.content[0]?.client_dni}</i></h1>
                 <input type="hidden" name="encuestaId" id="encuestaId" {...register('encuestaId', {required: true})} value={id}  />
                 <label htmlFor="client_dni">Inserte su DNI</label>
-                <input type="text" name="client_dni" id="client_dni" {...register('client_dni', {required: true})} defaultValue={encuesta?.data?.content[0]?.client_dni} />
+                <Styled.Input type="text" name="client_dni" id="client_dni" {...register('client_dni', {required: true})} defaultValue={encuesta?.data?.content[0]?.client_dni} />
                 <label htmlFor="product">Seleccione un producto</label>
-                <select name="product" id="product" {...register('product', {required: true})} onChange={(e) => {handleProductSelect(e.target.value);}} defaultValue={encuesta?.data?.content[0]?.product} >
+                <Styled.Select name="product" id="product" {...register('product', {required: true})} onChange={(e) => {handleProductSelect(e.target.value);}} defaultValue={encuesta?.data?.content[0]?.product} >
                     <option></option>
                     <option value="Luz">LUZ</option>
                     <option value="Gas">GAS</option>
                     <option value="Dual">DUAL</option>
-                </select>
+                </Styled.Select>
                 {lightOptions && (
                     <>
-                        <div>
+                        <Styled.Field>
                             <label htmlFor="subproduct">Elija una opción para subproducto LUZ</label>
-                            <select name="subproduct" id="subproduct" {...register('subproduct_light', {required: true})}>
+                            <Styled.Select name="subproduct" id="subproduct" {...register('subproduct_light', {required: true})}>
                                 <option></option>
                                 <option value="Tarifa plana">TARIFA PLANA</option>
                                 <option value="Tarifa por uso">TARIFA POR USO</option>
-                            </select>
-                        </div>
+                            </Styled.Select>
+                        </Styled.Field>
 
-                        <div>
-                            <label htmlFor="mantenimiento">Mantenimientos LUZ</label>
-                                <select name="mantenimiento" id="mantenimiento" {...register('maintenance_light', { required: true })}>
+                        <Styled.Field>
+                            <label htmlFor="mantenimiento">¿Mantenimiento para LUZ?</label>
+                                <Styled.Select name="mantenimiento" id="mantenimiento" {...register('maintenance_light', { required: true })}>
                                     <option></option>
                                     <option value="SÍ">SÍ</option>
                                     <option value="NO">NO</option>
-                                </select>
-                        </div>
+                                </Styled.Select>
+                        </Styled.Field>
                     </>
                 )}
 
                 {gasOptions && (
                     <>
-                        <div>
+                        <Styled.Field>
                             <label htmlFor="subproduct">Elija una opción para subproducto GAS</label>
-                            <select name="subproduct" id="subproduct" {...register('subproduct_gas', {required: true})}>
+                            <Styled.Select name="subproduct" id="subproduct" {...register('subproduct_gas', {required: true})}>
                                 <option></option>
                                 <option value="Plena">PLENA</option>
                                 <option value="Total">TOTAL</option>
-                            </select>
-                        </div>
+                            </Styled.Select>
+                        </Styled.Field>
 
-                        <div>
-                            <label htmlFor="mantenimiento">Mantenimientos GAS</label>
-                                <select name="mantenimiento" id="mantenimiento" {...register('maintenance_gas', { required: true })}>
+                        <Styled.Field>
+                            <label htmlFor="mantenimiento">¿Mantenimiento para GAS?</label>
+                                <Styled.Select name="mantenimiento" id="mantenimiento" {...register('maintenance_gas', { required: true })}>
                                     <option></option>
                                     <option value="SÍ">SÍ</option>
                                     <option value="NO">NO</option>
-                                </select>
-                        </div>
+                                </Styled.Select>
+                        </Styled.Field>
                     </>
                 )}
 
                 <label htmlFor="estado">Estado</label>
-                <select name="estado" id="estado" {...register('estado', { required: true })}>
+                <Styled.Select name="estado" id="estado" {...register('estado', { required: true })}>
                     <option></option>
                     <option value="VENDIDO">VENDIDO</option>
                     <option value="EN PROCESO">EN PROCESO</option>
                     <option value="NO VENDIDO">NO VENDIDO</option>
                     <option value="NO VÁLIDO">NO VÁLIDO</option>
-                </select>
-                {authorized ? (
-                    <input type="submit" value="Guardar cambios" />
-                ) : (
-                    <p>You are not authorized to save changes.</p>
-                )}
-                <button onClick={() =>openDeleteModal(id)}>Borrar registro</button>
-            </form>
+                </Styled.Select>
+                <Styled.Buttons>
+                    {authorized ? (
+                        <Styled.Submit type="submit" value="Guardar cambios" />
+                    ) : (
+                        <p>You are not authorized to save changes.</p>
+                    )}
+                    <Styled.Delete onClick={() =>openDeleteModal(id)}>Borrar registro</Styled.Delete>
+                </Styled.Buttons>
+            </Styled.Form>
             {isDeleteModalVisible && (
                 <DeleteModal productId={encuestaIdToDelete} isVisible={isDeleteModalVisible} onClose={() => setDeleteModalVisible(false)} onDelete={handleDelete} />
             )}
-        </>
+        </Styled.Body>
     )
 }
 
