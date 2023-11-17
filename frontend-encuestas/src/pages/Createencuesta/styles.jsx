@@ -11,15 +11,46 @@ const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     border-radius: 15px;
     width: 30vw;
-    height: 60vh;
-    margin-top: 15vh;
+    height: 75vh;
+    margin-top: 10vh;
     margin-left: 33vw;
     box-shadow: 10px 10px 11px 2px rgba(0,0,0,0.75);
 `
 
+const Field = styled.section`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 0.4em;
+    height: fit-content;
+`
+
+const Select = styled.select`
+    width: 135px;
+    border-radius: 10px;
+`
+
+const Input = styled.input`
+    border-radius: 10px;
+`
+
+const Submit = styled.input`
+    border-radius: 10px;
+    border: none;
+    background-color: #C9FFE2;
+    height: 1.5em;
+    width: 80px;
+`
+
 export default {
     Body,
-    Form
+    Form,
+    Field,
+    Select,
+    Input,
+    Submit
 }
