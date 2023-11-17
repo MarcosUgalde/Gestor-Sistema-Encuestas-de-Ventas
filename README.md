@@ -14,7 +14,9 @@ npm i cookie-parser cors express simple-stateless-auth-library slonik uuid
 
 También se deberán instalar las devDependencies:
 
+```
 npm i -D dotenv nodemon
+```
 
 también será necesario levantar un contenedor de docker utilizando el comando docker-compose up
 
@@ -24,15 +26,29 @@ Ahora podremos abrir el adminer en el puerto 8080:8080 para comporbar en todo mo
 
 En el adminer deberemos importar el documento con nombre "creation.sql"
 
-Finalmente ejecutaremos el comando "npm run dev" para que todo nuestro backend se ejecute correctamente
+Finalmente ejecutaremos el comando
+
+```
+npm run dev
+```
+
+para que todo nuestro backend se ejecute correctamente
 
 ### Frontend
 
 En la terminal del frontend también deberemos instalar las dependencias que se indican en el documento package.json:
 
+```
 npm i axios react-hook-form react-query styled-components wouter
+```
 
-Una vez instaladas todas las dependencias ejecutaremos también el comando "npm run dev" en la terminal y podremos visualizar la aplicación en nuestro local.
+Una vez instaladas todas las dependencias ejecutaremos también el comando
+
+```
+npm run dev
+```
+
+en la terminal y podremos visualizar la aplicación en nuestro local.
 
 ## Definición de usuario
 
