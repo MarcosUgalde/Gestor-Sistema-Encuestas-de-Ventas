@@ -3,14 +3,16 @@ const { sql } = require("slonik");
 const insertEncuesta = (
   client_dni,
   product,
-  subproduct,
-  mantenimiento,
+  subproduct_gas,
+  subproduct_light,
+  maintenance_gas,
+  maintenance_light,
   estado
 ) => sql.unsafe`
     INSERT INTO encuestas (
-        client_dni, product, subproduct, mantenimiento, estado
+        client_dni, product, subproduct_gas, subproduct_light, maintenance_gas, maintenance_light, estado
     ) VALUES (
-        ${client_dni}, ${product}, ${subproduct}, ${mantenimiento}, ${estado}
+        ${client_dni}, ${product}, ${subproduct_gas}, ${subproduct_light}, ${maintenance_gas}, ${maintenance_light}, ${estado}
     )
 `;
 
@@ -26,16 +28,20 @@ const selectOneEncuesta = (id) => sql.unsafe`
 const updateEncuesta = (
   client_dni,
   product,
-  subproduct,
-  mantenimiento,
+  subproduct_gas,
+  subproduct_light,
+  maintenance_gas,
+  maintenance_light,
   estado,
   id
 ) => sql.unsafe`
         UPDATE encuestas
         SET client_dni = ${client_dni},
         product = ${product},
-        subproduct = ${subproduct},
-        mantenimiento = ${mantenimiento},
+        subproduct_gas = ${subproduct_gas},
+        subproduct_light = ${subproduct_light},
+        maintenance_gas = ${maintenance_gas},
+        maintenance_light = ${maintenance_light},
         estado = ${estado}
         WHERE id = ${id}
 `;

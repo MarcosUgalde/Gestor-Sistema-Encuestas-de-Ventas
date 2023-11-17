@@ -7,10 +7,27 @@ const {
 } = require("./queries");
 
 const createEncuesta =
-  (db) => async (client_dni, product, subproduct, mantenimiento, estado) => {
+  (db) =>
+  async (
+    client_dni,
+    product,
+    subproduct_gas = null,
+    subproduct_light = null,
+    maintenance_gas = null,
+    maintenance_light = null,
+    estado
+  ) => {
     try {
       await db.query(
-        insertEncuesta(client_dni, product, subproduct, mantenimiento, estado)
+        insertEncuesta(
+          client_dni,
+          product,
+          subproduct_gas,
+          subproduct_light,
+          maintenance_gas,
+          maintenance_light,
+          estado
+        )
       );
       return {
         ok: true,
@@ -60,14 +77,25 @@ const getOneEncuesta = (db) => async (id) => {
 
 const editEncuesta =
   (db) =>
-  async (client_dni, product, subproduct, mantenimiento, estado, id) => {
+  async (
+    client_dni,
+    product,
+    subproduct_gas = null,
+    subproduct_light = null,
+    maintenance_gas = null,
+    maintenance_light = null,
+    estado,
+    id
+  ) => {
     try {
       const response = await db.query(
         updateEncuesta(
           client_dni,
           product,
-          subproduct,
-          mantenimiento,
+          subproduct_gas,
+          subproduct_light,
+          maintenance_gas,
+          maintenance_light,
           estado,
           id
         )
