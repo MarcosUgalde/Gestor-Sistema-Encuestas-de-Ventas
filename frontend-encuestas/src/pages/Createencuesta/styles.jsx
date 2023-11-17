@@ -16,6 +16,7 @@ const Form = styled.form`
     height: 60vh;
     margin-top: 15vh;
     margin-left: 33vw;
+    box-shadow: 10px 10px 11px 2px rgba(0,0,0,0.75);
 `
 
 export default {
