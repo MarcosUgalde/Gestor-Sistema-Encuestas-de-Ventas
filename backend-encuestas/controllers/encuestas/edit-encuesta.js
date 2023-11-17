@@ -3,12 +3,22 @@ const errors = require("../../misc/errors");
 
 module.exports = (db) => async (req, res, next) => {
   const { id } = req.params;
-  const { client_dni, product, subproduct, mantenimiento, estado } = req.body;
+  const {
+    client_dni,
+    product,
+    subproduct_gas,
+    subproduct_light,
+    maintenance_gas,
+    maintenance_light,
+    estado,
+  } = req.body;
   const encuesta = await editEncuesta(await db)(
     client_dni,
     product,
-    subproduct,
-    mantenimiento,
+    subproduct_gas,
+    subproduct_light,
+    maintenance_gas,
+    maintenance_light,
     estado,
     id
   );
