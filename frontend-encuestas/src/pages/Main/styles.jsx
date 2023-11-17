@@ -5,9 +5,8 @@ const Body = styled.section`
     min-height: 98vh;
 `
 
-const List = styled.section`
-    display: flex;
-    flex-direction: column;
+const Table = styled.section`
+    box-shadow: 1px 12px 8px -4px rgba(0,0,0,0.75);
 `
 
 const Anchor = styled.a`
@@ -19,6 +18,6 @@ const Anchor = styled.a`
 
 export default {
     Body,
-    List,
+    Table,
     Anchor
 }

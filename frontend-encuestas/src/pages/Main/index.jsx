@@ -18,17 +18,38 @@ function Mainpage () {
             <Styled.Body>
                 <NavBar />
                 <h1>Todas las encuestas</h1>
-                <Styled.List>
-                {response?.content?.map((encuesta) => (
-                        <Link href={`/update/${encuesta.id}`} key={encuesta.id}>
-                            <Styled.Anchor>
-                                {encuesta.client_dni}
-                            </Styled.Anchor>
-                        </Link>
+                <Styled.Table>
+                    <th>DNI de cliente</th>
+                    <th>Producto</th>
+                    <th>Subproducto Gas</th>
+                    <th>Subproducto Luz</th>
+                    <th>Mantenimiento Gas</th>
+                    <th>Mantenimiento Luz</th>
+                    <th>Estado</th>
+                {response?.content?.map((encuesta) => {
+                        return (
+                            <>
+                                <tr>
+                                    <td>
+                                        <Link href={`/update/${encuesta.id}`} key={encuesta.id}>
+                                            <Styled.Anchor>
+                                                {encuesta.client_dni}
+                                            </Styled.Anchor>
+                                        </Link>
+                                    </td>
+                                    <td>{encuesta.product}</td>
+                                    <td>{encuesta.subproduct_gas}</td>
+                                    <td>{encuesta.subproduct_light}</td>
+                                    <td>{encuesta.maintenance_gas}</td>
+                                    <td>{encuesta.maintenance_light}</td>
+                                    <td>{encuesta.estado}</td>
+                                </tr>
+                            </>
+                        )
                         
-                    )
+                }
                     )} 
-                </Styled.List>
+                </Styled.Table>
             </Styled.Body>
         
     )
