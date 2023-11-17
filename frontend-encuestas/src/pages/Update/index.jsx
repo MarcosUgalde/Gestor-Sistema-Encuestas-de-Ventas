@@ -111,11 +111,13 @@ const handleProductSelect = (selectedValue) => {
                 </Styled.Select>
                 <Styled.Buttons>
                     {authorized ? (
-                        <Styled.Submit type="submit" value="Guardar cambios" />
+                        <>
+                            <Styled.Submit type="submit" value="Guardar cambios" />
+                            <Styled.Delete onClick={() =>openDeleteModal(id)}>Borrar registro</Styled.Delete>
+                        </>
                     ) : (
-                        <p>You are not authorized to save changes.</p>
+                        <p>No estás autorizado a cambiar o eliminar registros</p>
                     )}
-                    <Styled.Delete onClick={() =>openDeleteModal(id)}>Borrar registro</Styled.Delete>
                 </Styled.Buttons>
             </Styled.Form>
             {isDeleteModalVisible && (
